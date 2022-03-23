@@ -1,0 +1,74 @@
+import pygame
+pygame.init
+
+#constants for colors
+WHITE = (255, 255, 255)
+BLUE = (99, 42, 245)
+YELLOW = (255, 255, 143)
+RED = (255, 0, 0)
+GREEN = (0, 255 ,0)
+
+
+### class definition--------------------------------------------
+class rainbow:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        
+    def draw(self):
+        pygame.draw.arc(screen, (RED), ( self.xpos-39, self.ypos-130, 108 , 270), 0, 3.14,5)
+        pygame.draw.arc(screen, (YELLOW), ( self.xpos-30, self.ypos-120, 95 , 220), 0, 3.14,5)
+        pygame.draw.arc(screen, (GREEN), ( self.xpos-20, self.ypos-110, 85 , 205), 0, 3.14,5)
+        pygame.draw.arc(screen, (BLUE), ( self.xpos-15, self.ypos-100, 75 , 220), 0, 3.14,5)
+        pygame.draw.circle(screen, (WHITE), (self.xpos-15, self.ypos+15), 25) 
+        pygame.draw.circle(screen, (WHITE), (self.xpos+20, self.ypos-10), 26)
+        pygame.draw.circle(screen, (WHITE), (self.xpos+50, self.ypos+15), 25)
+        pygame.draw.circle(screen, (WHITE), (self.xpos+20, self.ypos+15), 25)
+      
+# end of class definition-----------------------------------------
+
+
+
+
+#stamp (aka instantiate) flowers
+rainbow1 = rainbow(100, 150)
+rainbow2 = rainbow( 300, 150)
+rainbow3 = rainbow( 500, 150)
+rainbow4 = rainbow( 300, 380)
+
+#creates game screen and caption
+screen = pygame.display.set_mode((800, 800))
+pygame.display.set_caption("butterfly")
+
+#game variables
+doExit = False #variable to quit out of game loop
+clock = pygame.time.Clock() #sets up a game clock to regulate game speed
+
+
+#BEGIN GAME LOOP######################################################
+while not doExit:
+   
+    clock.tick(60) #FPS (frames per second)
+   
+    #pygame's way of listening for events (key presses, mouse clicks, etc)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+           doExit = True #lets you quit program
+
+    #keyboard input-----------------------------------
+  
+     
+    #render section-----------------------------------
+ 
+
+    #draw class objects
+    rainbow1.draw()
+    rainbow2.draw()
+    rainbow3.draw()
+    rainbow4.draw()
+  
+
+    pygame.display.flip() #update graphics each game loop
+
+#END GAME LOOP#######################################################
+pygame.quit()
